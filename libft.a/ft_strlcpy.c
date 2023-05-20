@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 12:35:20 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/19 09:09:13 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/20 14:42:55 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
-	size_t	src_len;
 
 	i = 0;
 	if (dstsize > 0)
@@ -25,8 +24,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 			dst[i] = src[i];
 			i++;
 		}
-		if (i < dstsize)
-			dst[i] = 0;
+		dst[i] = 0;
 	}
 	while (src[i])
 		i++;

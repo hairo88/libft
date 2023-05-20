@@ -6,13 +6,13 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:05:18 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/19 09:09:36 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/20 14:39:08 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_con_strlen(const char *str)
+size_t	ft_con_strlen(const char *str)
 {
 	int	i;
 
@@ -24,8 +24,8 @@ int	ft_con_strlen(const char *str)
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	if (len == 0)

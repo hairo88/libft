@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 12:14:18 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/19 13:35:59 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/20 14:37:13 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (s == NULL)

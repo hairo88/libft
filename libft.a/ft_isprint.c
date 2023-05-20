@@ -6,11 +6,13 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 11:55:02 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/19 09:01:42 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/20 15:08:54 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_print(int c)
+#include "libft.h"
+
+int	ft_isprint(int c)
 {
 	int	ans;
 
