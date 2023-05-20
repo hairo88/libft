@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/19 12:51:56 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/19 14:28:25 by kotainou         ###   ########.fr       */
+/*   Created: 2023/05/16 16:00:17 by kotainou          #+#    #+#             */
+/*   Updated: 2023/05/20 13:39:18 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libc.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
+	char	*ans;
+	int		i;
 
 	i = 0;
-	if (s == NULL || f == NULL)
+	ans = malloc(sizeof(char) * (len + 1));
+	if (ans == NULL)
 		return (NULL);
-	while (s[i])
+	while (i < len)
 	{
-		f(i, s);
+		ans[i] = s[start + i];
 		i++;
 	}
+	return (ans);
 }
+
+// int main()
+// {
+// 	printf("%s\n", ft_substr("abcdef", 1, 3));
+// 	printf("%s\n", ft_substr("abcdef", 0, 3));
+// 	printf("%s\n", ft_substr("abcdef", 1, 1));
+// }

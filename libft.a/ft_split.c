@@ -6,56 +6,49 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:46:11 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/19 13:37:53 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/20 12:33:46 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//区切り文字かどうかを判断する
-int	is_charset(char str, char *charset)
+//大きい箱の必要数
+static	int	ft_count_words(char	const *str, char c)
 {
-	int	i;
-
-	i = 0;
-	while (charset[i])
-	{
-		if (charset[i] == str)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	ft_count_array(char *str, char *charset)
-{
-	int	ans;
-	int	i;
+	size_t	i;
+	int		start;
+	int		ans;
 
 	i = 0;
 	ans = 0;
+	start = 0;
 	while (str[i])
 	{
-		if (is_charset(str, charset))
+		if (str[i] == c && i > start)
+		{
 			ans++;
+			start = i + 1;
+		}
 		i++;
 	}
 	return (ans);
 }
 
-//
-//char **
-//
-char	*ft_strndup(char	*str, int n)
+//小さい箱の必要数とその文字列
+static	char	*ft_strdup_split(char *str, char c)
 {
+	size_t	str_len;
+	size_t	i;
 	char	*ans;
-	int		i;
 
 	i = 0;
-	ans = malloc((sizeof(char)) * (n + 1));
+	str_len = 0;
+	while (str[str_len] != c)
+		str_len++;
+	ans = malloc(sizeof(char) * (str_len + 1));
 	if (ans == NULL)
 		return (NULL);
-	while (i < n && str[i])
+	while (i < str_len)
 	{
 		ans[i] = str[i];
 		i++;
@@ -64,89 +57,64 @@ char	*ft_strndup(char	*str, int n)
 	return (ans);
 }
 
-char	**ft_split(char *str, char *charset)
+//箱の中身をチャック
+static	void	ft_cheak(char **ans, int n)
 {
-	int		i;
-	int		arr_num;
+	size_t	i;
+
+	i = 0;
+	while (ans[i])
+	{
+		if (!ans[i])
+			return ;
+		i++;
+	}
+	return ;
+}
+
+char	**ft_split(char const *s, char c)
+{
+	size_t	i;
+	size_t	j;
+	int		count_words;
 	char	**ans;
-	int		count;
-	int		j;
-	char	*tmp;
 
 	i = 0;
-	arr_num = 0;
-	//二次配列の行数を数えている
-	while (str[i])
+	j = 0;
+	count_words = ft_count_words(s, c);
+	ans = malloc(sizeof(char *) * (count_words + 1));
+	while (s[i])
 	{
-		if (is_charset(str[i], charset))
-			i++;
-		else
+		if ((char)s[i] == c || i == 0)
 		{
-			tmp = &str[i];
-
-	//malloc関数で1回目の動的配列
-	ans = malloc((sizeof(char *)) * (arr_num + 1));
-	if (ans == NULL)
-	{
-		printf("error\n");
-		return (NULL);
-	}
-	i = 0;
-	//ここで区切り文字が出てくるまでの
-	while (str[i])
-	{
-		if (is_charset(str[i], charset))
-			i++;
-		else
-		{
-			tmp = ans[i];
-			count = 0;
-			while (!(is_charset(str[i], charset)))
-			{
-				count++;
-				i++;
-			}
-			ans[i] = ft_strndup(tmp, count);
+			if (i == 0)
+				ans[j] = ft_strdup_split((char *)&s[i], c);
+			else
+				ans[j] = ft_strdup_split((char *)&s[i + 1], c);
+			j++;
 		}
+		i++;
 	}
+	ans[i] = 0;
 	return (ans);
 }
 
-#include <stdio.h>
-#include <stdlib.h>
+// #include <stdio.h>
 
-int main()
-{
-	char *str =  "This is/a#test!@string";
-	char *charset = " /!#@";
-	ft_split(str, charset);
+// int	main(void)
+// {
+// 	char	*test_text = "this is a pen";
+// 	char	charset = ' ';
+// 	char	**ans;
+// 	size_t	i;
+// 	size_t	j;
 
-}
-/*
-int main()
-{
-    char *str = "This is/a#test!@string";
-    char *charset = " /!#@";
-    char **result = ft_split(str, charset);
-
-    for (int i = 0; result[i] != NULL; i++)
-    {
-        printf("%s\n", result[i]);
-        free(result[i]);
-    }
-
-    free(result);
-
-    return 0;
-}    for (int i = 0; result[i] != NULL; i++)
-    {
-        printf("%s\n", result[i]);
-        free(result[i]);
-    }
-
-    free(result);
-
-    return 0;
-}
-
-*/
+// 	i = 0;
+// 	ans = ft_split(test_text, charset);
+// 	while (ans[i])
+// 	{
+// 		printf("%s\n", ans[i]);
+// 		i++;
+// 	}
+// 	return (0);
+// }

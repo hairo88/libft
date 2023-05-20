@@ -6,14 +6,14 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 09:34:06 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/19 14:45:31 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/20 14:00:51 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-int	ft_count_keta(int n)
+static	int	ft_count_keta(int n)
 {
 	int	ans;
 
@@ -31,7 +31,7 @@ int	ft_count_keta(int n)
 	return (ans);
 }
 
-char	*ft_array_number(char *ans, int n, int str_len)
+static	char	*ft_array_number(char *ans, int n, int str_len)
 {
 	int	i;
 	int	sign;
@@ -69,4 +69,9 @@ char	*ft_itoa(int n)
 		return (NULL);
 	ans = ft_array_number(ans, n, str_len);
 	return (ans);
+}
+
+int	main(void)
+{
+	printf("%s\n", ft_itoa(-2147483647));
 }

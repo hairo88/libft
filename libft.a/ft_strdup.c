@@ -6,13 +6,13 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:05:42 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/19 09:11:12 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/20 12:34:19 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_con_strlen(const char	*str)
+static	int	ft_con_strlen(const char	*str)
 {
 	int	i;
 

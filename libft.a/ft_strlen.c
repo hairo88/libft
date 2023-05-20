@@ -6,13 +6,15 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 11:56:05 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/19 09:09:21 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/20 12:53:22 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+#include "libc.h"
+
+size_t	ft_strlen(char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])

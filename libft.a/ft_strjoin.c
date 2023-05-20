@@ -6,23 +6,21 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:15:12 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/19 09:11:03 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/20 13:39:37 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stddef.h>
-#include <stdlib.h>
+#include "libc.h"
 
-int	ft_strlen(char *str)
-{
-	int		count;
+// size_t	ft_strlen(char *str)
+// {
+// 	int		count;
 
-	count = 0;
-	while (str[count])
-		count++;
-	return (count);
-}
+// 	count = 0;
+// 	while (str[count])
+// 		count++;
+// 	return (count);
+// }
 
 char	*ft_strcat(char *dest, char *src)
 {
