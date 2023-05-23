@@ -6,12 +6,11 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:14:30 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/20 12:32:18 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/23 13:48:02 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static	int	ft_strcmp(const char *p1, char *p2)
 {
@@ -29,6 +28,16 @@ static	int	ft_strcmp(const char *p1, char *p2)
 	return (p1[i] - p2[i]);
 }
 
+int	ft_isdigit(int c)
+{
+	int	ans;
+
+	ans = 0;
+	if ('0' <= c && c <= '9')
+		ans = 1;
+	return (ans);
+}
+
 static	int	ft_create_number(const char *str, int sign)
 {
 	size_t	i;
@@ -44,13 +53,13 @@ static	int	ft_create_number(const char *str, int sign)
 		if (sign == 1)
 		{
 			if ((num == LONG_MAX / 10 && str[i + 1] - '0'
-					> LONG_MAX % 10) && (num > LONG_MAX / 10 && str[i + 1]))
+					> LONG_MAX % 10) || (num > LONG_MAX / 10 && str[i + 1]))
 				return ((int)LONG_MAX);
 		}
 		else
 		{
 			if ((num == LONG_MAX / 10 && str[i + 1] - '0' > LONG_MAX % 10 + 1)
-				&& (num > LONG_MAX / 10 && str[i + 1]))
+				|| (num > LONG_MAX / 10 && str[i + 1]))
 				return ((int)LONG_MIN);
 		}
 		i++;
@@ -83,21 +92,3 @@ int	ft_atoi(const char *str)
 	ans = ft_create_number(&str[i], sign);
 	return (ans);
 }
-
-// #include <stdio.h>
-// #include <stdlib.h>
-
-// int	main()
-// {
-// 	//printf("atoi = %d ft_atoi = %d\n", atoi("18446744073709551616"), ft_atoi("18446744073709551616"));
-// 	//INT_MAX -> SIZE_MAX
-// 	//INT_MIN
-// 	char *test = "18446744073709551614";
-// 	int ans1 = atoi(test), ans2 = atoi(test);
-// 	printf("atoi = %d ft_atoi = %d\n", ans1, ans2);
-// 	if (ans1 == ans2)
-// 		printf("OK\n");
-// 	else
-// 		printf("NO KO\n");
-// 	return (0);
-// }

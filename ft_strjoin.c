@@ -6,23 +6,13 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:15:12 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/20 13:39:37 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/23 13:24:10 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libc.h"
+#include "libft.h"
 
-// size_t	ft_strlen(char *str)
-// {
-// 	int		count;
-
-// 	count = 0;
-// 	while (str[count])
-// 		count++;
-// 	return (count);
-// }
-
-char	*ft_strcat(char *dest, char *src)
+static	char	*ft_strcat(char *dest, char const *src)
 {
 	int		i;
 	int		sum;
@@ -40,23 +30,24 @@ char	*ft_strcat(char *dest, char *src)
 	return (dest);
 }
 
-int	ft_total_str(char	*str1, char *str2)
+static	size_t	ft_total_str(char const*str1, char const *str2)
 {
 	int		sum;
 
 	sum = 0;
 	sum += ft_strlen(str1) + ft_strlen(str2);
-	sum++;
 	return (sum);
 }
 
-char	*ft_strjoin(char *str1, char *str2)
+char	*ft_strjoin(char const *str1, char const *str2)
 {
 	char	*ans;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	ans = malloc(sizeof(char) * (ft_total_str(str1, str2) + 1));
+	if (str1 == NULL && str2 == NULL)
+		return (NULL);
+	ans = ft_calloc(sizeof(char), (ft_total_str(str1, str2) + 1));
 	if (!ans)
 		return (NULL);
 	while (i < ft_strlen(str1))
@@ -67,11 +58,3 @@ char	*ft_strjoin(char *str1, char *str2)
 	ft_strcat(ans, str2);
 	return (ans);
 }
-
-// int	main(void)
-// {
-// 	/* 1 */ printf("%s %s\n", ft_strjoin("hello", "world"), "helloworld");
-// 	/* 2 */ printf("%s %s\n", ft_strjoin("", "world"), "world");
-// 	/* 3 */ printf("%s %s\n", ft_strjoin("hello", ""), "hello");
-// 	/* 4 */ printf("%s %s\n", ft_strjoin("", ""), "");
-// }

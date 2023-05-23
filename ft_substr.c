@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 19:05:42 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/20 12:34:19 by kotainou         ###   ########.fr       */
+/*   Created: 2023/05/16 16:00:17 by kotainou          #+#    #+#             */
+/*   Updated: 2023/05/23 12:44:58 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-static	int	ft_con_strlen(const char	*str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(char *src)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*ans;
-	int		size;
-	int		index;
+	size_t	i;
 
-	index = 0;
-	size = ft_con_strlen(src);
-	ans = (char *)malloc(sizeof(char) * (size + 1));
+	i = 0;
+	if (s == NULL)
+		return (NULL);
+	if (ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
+	if (!len || ft_strlen(s) < start)
+	{
+		ans = ft_strdup("");
+		return (ans);
+	}
+	ans = ft_calloc(sizeof(char), (len + 1));
 	if (ans == NULL)
 		return (NULL);
-	while (src[index])
+	ans[0] = 0;
+	while (i < len && s[start + i])
 	{
-		ans[index] = src[index];
-		index++;
+		ans[i] = s[start + i];
+		i++;
 	}
-	ans[index] = 0;
 	return (ans);
 }
