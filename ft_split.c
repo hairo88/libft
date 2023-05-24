@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:46:11 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/23 13:23:52 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/25 08:27:02 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,12 @@ static	void	ft_check(char	**ans, size_t	now_count_words)
 	size_t	i;
 
 	i = 0;
-	if (ans == NULL)
+	while (i < now_count_words)
 	{
-		while (i < now_count_words)
-		{
-			free(ans[i]);
-			i++;
-		}
-		free(ans);
+		free(ans[i]);
+		i++;
 	}
+	free(ans);
 }
 
 //大きな箱に小さな箱を格納する
@@ -110,6 +107,8 @@ char	**ft_split(char const *s, char c)
 
 	count_words = ft_count_words(s, c);
 	ans = ft_calloc(sizeof(char *), count_words + 1);
+	if (ans == NULL)
+		return (NULL);
 	ft_insert(s, c, count_words, ans);
 	return (ans);
 }

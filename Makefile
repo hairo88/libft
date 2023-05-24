@@ -47,7 +47,7 @@ $(NAME): $(OBJS)
 	ranlib $(NAME)
 
 %.o: %.c $(INCL)
-	$(CC) $(CFLAGS) -c $< -o $@ -I$(INCL)
+	$(CC) $(CFLAGS) -c $< -o $@ -I.
 
 clean:
 	rm -f $(OBJS)

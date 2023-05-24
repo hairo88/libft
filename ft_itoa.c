@@ -6,13 +6,15 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 09:34:06 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/22 18:53:31 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/25 08:21:55 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	size_t	ft_count_keta(int n)
+#include "libft.h"
+
+static	size_t	ft_get_digit_count(int n)
 {
 	int		ans;
 	long	new_n;
@@ -66,7 +68,7 @@ char	*ft_itoa(int n)
 	size_t	str_len;
 
 	i = 0;
-	str_len = ft_count_keta(n);
+	str_len = ft_get_digit_count(n);
 	ans = malloc(sizeof(char) * (str_len + 1));
 	if (ans == NULL)
 		return (NULL);

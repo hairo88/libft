@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:15:12 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/23 13:24:10 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/25 08:29:59 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_strjoin(char const *str1, char const *str2)
 	size_t	i;
 
 	i = 0;
-	if (str1 == NULL && str2 == NULL)
+	if (str1 == NULL || str2 == NULL)
 		return (NULL);
 	ans = ft_calloc(sizeof(char), (ft_total_str(str1, str2) + 1));
 	if (!ans)

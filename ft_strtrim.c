@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:56:29 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/23 13:10:38 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/25 08:31:27 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,27 @@
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*ans;
-	size_t	str;
+	size_t	sta;
 	size_t	end;
 	size_t	i;
 
 	if (s1 == NULL || set == NULL)
 		return (NULL);
-	str = 0;
+	sta = 0;
 	end = ft_strlen(s1);
-	while (ft_strchr(set, s1[str]) && str < end)
-		str++;
-	while (ft_strrchr(set, s1[end - 1]) && str < end)
+	while (ft_strchr(set, s1[sta]) && sta < end)
+		sta++;
+	while (sta < end && ft_strrchr(set, s1[end - 1]))
 		end--;
-	ans = ft_calloc(sizeof(char), end - str + 1);
+	ans = ft_calloc(sizeof(char), end - sta + 1);
 	if (ans == NULL)
 		return (NULL);
 	i = 0;
-	while (str < end)
+	while (sta < end)
 	{
-		ans[i] = s1[str];
+		ans[i] = s1[sta];
 		i++;
-		str++;
+		sta++;
 	}
 	ans[i] = 0;
 	return (ans);

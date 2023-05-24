@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:05:42 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/22 18:56:33 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/25 08:27:36 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strdup(const char *s1)
 	int		index;
 
 	index = 0;
+	if (s1 == NULL)
+		return (NULL);
 	size = ft_strlen(s1);
 	ans = (char *)malloc(sizeof(char) * (size + 1));
 	if (ans == NULL)

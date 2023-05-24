@@ -6,21 +6,17 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:05:46 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/22 18:55:51 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/25 08:26:30 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+//ft_strlenから文字数取得
 void	ft_putendl_fd(char *s, int fd)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
+	if (s == NULL)
+		return ;
+	write(fd, s, ft_strlen(s));
 	write(fd, "\n", 1);
 }
