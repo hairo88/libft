@@ -6,7 +6,7 @@
 /*   By: kotainou <kotainou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:14:30 by kotainou          #+#    #+#             */
-/*   Updated: 2023/05/23 13:48:02 by kotainou         ###   ########.fr       */
+/*   Updated: 2023/05/23 15:38:43 by kotainou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,6 @@ static	int	ft_strcmp(const char *p1, char *p2)
 		}
 	}
 	return (p1[i] - p2[i]);
-}
-
-int	ft_isdigit(int c)
-{
-	int	ans;
-
-	ans = 0;
-	if ('0' <= c && c <= '9')
-		ans = 1;
-	return (ans);
 }
 
 static	int	ft_create_number(const char *str, int sign)
